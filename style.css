@@ -74,16 +74,21 @@
 }
 
 .currently__time {
-    font-weight: 300;
-    font-size: calc(15px + 1vw);
-    line-height: calc(16px + 1vw);
+    font-weight: 700;
+    font-size: calc(20px + 1vw);
+    line-height: calc(23px + 1vw);
+    margin-bottom: 5px;
 }
 
 .currently__weather,
 .currently__temperature {
     font-weight: 300;
     font-size: calc(10px + 1vw);
-    line-height: calc(10px + 1vw);
+    line-height: calc(13px + 1vw);
+}
+
+.currently__temperature, .currently__humidity {
+    margin-left: 5px;
 }
 
 .currently__wind-group {
