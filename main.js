@@ -75,6 +75,16 @@ let toCamelCase = (str) => {
     return arr.join('');
 }
 
+let setTheBg = (temp) => {
+    if(temp <= 0) {
+        $('.wrap').css('background', 'linear-gradient(90.52deg, #74EBD5 0.33%, #9FACE6 99.44%)');
+    } else if (temp>0 && temp <=20) {
+        $('.wrap').css('background', 'linear-gradient(90.9deg, #E0C3FC 0.73%, #8EC5FC 99.22%)');
+    } else if (temp > 20) {
+        $('.wrap').css('background', 'linear-gradient(89.77deg, #FEE140 0.22%, #FA709A 99.83%)');
+    }
+}
+
 let setTheIcon = (id, sunrise, sunset, timezone) => {
     if (id >= 200 && id <= 232) {
         return './images/weather-status/thunderstorm.png'
@@ -161,6 +171,7 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
                 $('#currently__weather-icon').attr('src', setTheIcon(data.weather['0'].id, sunrise, sunset, timesone));
                 $('#currently__weather').html(firstToUpper(data.weather['0'].description + ', '));
                 $('#currently__temperature').html((data.main.temp - 273).toFixed(1) + '&#8451');
+                setTheBg((data.main.temp - 273).toFixed(0))
                 console.log(data);
 
                 fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + coords.lat + '&lon=' + coords.lon + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
@@ -211,7 +222,12 @@ $('.find__input').blur(function () {
 
 $('#find__btn').click(function () {
     $('#preloader').fadeToggle(300);
-    city = $('.find__input').val();
+    city = firstToUpper($('.find__input').val());
+    $('.find__placeholder').css({
+        'top': '35px',
+        'opacity': '0.4',
+    })
+    $('.find__input').val('')
     $('#find').css('display', 'none');
     $('#currently__city').html(city)
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
@@ -237,6 +253,7 @@ $('#find__btn').click(function () {
             $('#currently__weather-icon').attr('src', setTheIcon(data.weather['0'].id, sunrise, sunset, timesone));
             $('#currently__weather').html(firstToUpper(data.weather['0'].description + ', '));
             $('#currently__temperature').html((data.main.temp - 273).toFixed(1) + '&#8451');
+            setTheBg((data.main.temp - 273).toFixed(0))
             console.log(data);
 
             fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + coords.lat + '&lon=' + coords.lon + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
