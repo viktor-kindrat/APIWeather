@@ -347,9 +347,8 @@
 
 .future__weather-icon {
     max-height: 100%;
-    width: 18%;
-    margin-right: 15px;
-    padding: 5px;
+    width: 20%;
+    padding: 15px;
 }
 
 .future__column {
