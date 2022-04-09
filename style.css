@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 20px;
     margin-bottom: 0px;
     -webkit-border-radius: 10px;
@@ -134,8 +134,10 @@
 .currently__info-img[src="./images/img-description/max.png"],
 .currently__info-img[src="./images/img-description/min.png"] {
     width: 100%;
-    padding: 5px;
-    margin-bottom: 3px;
+    padding: 0 20px;
+    margin-bottom: 25px;
+    position: relative;
+    top: 10px;
 }
 
 .currently__info-img[src="./images/img-description/sunset.png"] {
@@ -359,4 +361,68 @@
 
 .future__sun-img {
     width: 70%;
+}
+
+@media screen and (max-width: 980px){
+    .wrap {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 30px;
+    }
+
+    .left, .right {
+        min-height: 100vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .currently {
+        height: 100%;
+        width: 95%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .future {
+        width: 95%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .future__item {   
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .wrap {
+        padding: 0;
+        padding-bottom: 30px;
+    }
+    .left, .right {
+        min-height: 100vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .currently {
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .future {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .future__weather-icon {
+        height: 70%;
+        width: auto;
+        align-self: center;
+    }
 }
