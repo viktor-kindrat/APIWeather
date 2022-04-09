@@ -17,6 +17,58 @@
     background: linear-gradient(89.77deg, #FEE140 0.22%, #FA709A 99.83%);
 }
 
+.preloarer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000000;
+    z-index: 200;
+    background-color: #85FFBD;
+    background-image: linear-gradient(90deg, #85FFBD 0%, #FFFB7D 100%);
+}
+
+.preloader__circle {
+    width: 200px;
+    height: 200px;
+    border: 10px solid #45A3E7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 30px;
+    animation: blick 0.5s infinite linear;
+    cursor: pointer;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    -webkit-animation: blick 1s infinite linear;
+}
+
+@keyframes blick {
+    0% {
+        box-shadow: 0 0 0 #45A3E7;
+    }
+    50% {
+        box-shadow: 0 0 40px #45A3E7;
+        transform: scale(1.03);
+        -webkit-transform: scale(1.03);
+        -moz-transform: scale(1.03);
+        -ms-transform: scale(1.03);
+        -o-transform: scale(1.03);
+}
+    100% {
+        box-shadow: 0 0 0 #45A3E7;
+    }
+}
+
 
 /* left part styles  */
 .left {
@@ -56,6 +108,26 @@
     text-align: center;
     color: #FFFFFF;
     background: transparent;
+    transition: 0.3s linear;
+    cursor: pointer;
+    -webkit-transition: 0.3s linear;
+    -moz-transition: 0.3s linear;
+    -ms-transition: 0.3s linear;
+    -o-transition: 0.3s linear;
+}
+
+.currently__city:hover {
+    color: #45A3E7;
+}
+
+.currently__flag {
+    height: calc(20px + 1vw);
+    border-radius: 4px;
+    margin-left: 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 
 .currently__weather-icon {
@@ -87,7 +159,8 @@
     line-height: calc(13px + 1vw);
 }
 
-.currently__temperature, .currently__humidity {
+.currently__temperature,
+.currently__humidity {
     margin-left: 5px;
 }
 
@@ -155,8 +228,8 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
-    font-size: calc(15px + 1vw);
-    line-height: calc(16px + 1vw);
+    font-size: calc(10px + 1vw);
+    line-height: calc(11px + 1vw);
     display: flex;
     align-items: center;
     text-align: center;
@@ -182,7 +255,7 @@
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .currently__text-row {
@@ -368,7 +441,74 @@
     width: 70%;
 }
 
-@media screen and (max-width: 980px){
+.find {
+    height: 30%;
+    width: 60%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 35%;
+    left: 20%;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 60px 47px -47px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.find__input {
+    width: 60%;
+    height: 50px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.find__btn {
+    width: 30%;
+    padding: 15px;
+    background: #45A3E7;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 900;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+.find__btn:hover {
+    color: #45A3E7;
+    background: #ffffff;
+}
+
+.find__placeholder {
+    z-index: 2;
+    font-size: 16px;
+    position: relative;
+    top: 35px;
+    opacity: 0.2;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+@media screen and (max-width: 980px) {
     .wrap {
         flex-direction: column;
         align-items: center;
@@ -376,7 +516,8 @@
         padding-bottom: 30px;
     }
 
-    .left, .right {
+    .left,
+    .right {
         min-height: 100vh;
         width: 100%;
         align-items: center;
@@ -395,7 +536,7 @@
         justify-content: center;
     }
 
-    .future__item {   
+    .future__item {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         margin-bottom: 30px;
     }
@@ -406,7 +547,9 @@
         padding: 0;
         padding-bottom: 30px;
     }
-    .left, .right {
+
+    .left,
+    .right {
         min-height: 100vh;
         width: 100%;
         align-items: center;
