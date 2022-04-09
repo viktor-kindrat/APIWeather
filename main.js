@@ -296,12 +296,21 @@ $('#find__btn').click(function () {
                     $('#currently__max-temp').html((data.daily['0'].temp.max - 273).toFixed(1) + '&#8451');
                     $('#currently__min-temp').html((data.daily['0'].temp.min - 273).toFixed(1) + '&#8451');
                     $('#preloader').fadeToggle(300);
+                    for (let i = 1; i != 6; i++) {
+                        $('#future__wind-speed' + i).html(data.daily[i].wind_speed + ' m/s')
+                        $('#future__wind-direction' + i).css('transform', 'rotate(' + data.daily[i].wind_deg + 'deg)');
 
-                    dailySave = data.daily;
-                    for (let i = 0; i != dailySave.length; i++) {
-                        console.log((dailySave[i].temp.day - 273.15).toFixed(2))
+                        $('#future__max-temp' + i).html((data.daily[i].temp.max - 273).toFixed(0) + '&#8451');
+                        $('#future__min-temp' + i).html((data.daily[i].temp.min - 273).toFixed(0) + '&#8451');
+
+                        $('#future__weather-status' + i).attr('src', setTheIcon(data.daily[i].weather[0].id, sunrise, sunset, timesone));
+
+                        let timezone = new Date(data.timezone_offset);
+                        let thisSunrise = new Date(data.daily[i].sunrise);
+                        let thisSunset = new Date(data.daily[i].sunset);
+                        $('#future__sunrise' + i).html(hourMask(thisSunrise.getHours() + timezone.getHours(), thisSunrise.getMinutes()));
+                        $('#future__sunset' + i).html(hourMask(thisSunset.getHours() + timezone.getHours(), thisSunset.getMinutes()));
                     }
-                    console.log(dailySave);
                     $('.left').show(300);
                     $('.right').show(300);
                 })
