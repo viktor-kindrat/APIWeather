@@ -97,7 +97,7 @@ let setTheBg = (temp) => {
     } else if (temp > 0 && temp <= 20) {
         $('.wrap').css('background', 'linear-gradient(90.9deg, #E0C3FC 0.73%, #8EC5FC 99.22%)');
     } else if (temp > 20) {
-        $('.wrap').css('background', 'linear-gradient(89.77deg, #FEE140 0.22%, #FA709A 99.83%)');
+        $('.wrap').css('background', 'linear-gradient(270.5deg, #FFF1A3 0.42%, #FA709A 98.36%)');
     }
 }
 
