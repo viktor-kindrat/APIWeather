@@ -13,7 +13,9 @@
     <!-- fonts  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@217&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <!-- styles  -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -22,7 +24,7 @@
     <div class="wrap">
         <section class="left">
             <div class="currently">
-                <input type="button" value="Lviv" class="currently__city">
+                <h2 class="currently__city">Lviv, 🇺🇦</h2>
                 <img src="./images/weather-status/clearDay.png" alt="status" class="currently__weather-icon">
                 <span class="currently__text-column">
                     <p class="currently__time">16:31</p>
@@ -72,50 +74,66 @@
                     <div class="currently__by-hour-weather">
                         <img src="./images/weather-status/scatteredClouds.png" alt="cloudy"
                             class="currently__hour-weather-icon">
-                        <span class="currently__weather-time">00:00</span>
-                        <span class="currently__weather-temperature">19 &#8451</span>
+                        <div class="currently__text-column">
+                            <span class="currently__weather-time">00:00</span>
+                            <span class="currently__weather-temperature">19 &#8451</span>
+                        </div>
                     </div>
                     <div class="currently__by-hour-weather">
                         <img src="./images/weather-status/scatteredClouds.png" alt="cloudy"
                             class="currently__hour-weather-icon">
-                        <span class="currently__weather-time">00:00</span>
-                        <span class="currently__weather-temperature">19 &#8451</span>
+                        <div class="currently__text-column">
+                            <span class="currently__weather-time">00:00</span>
+                            <span class="currently__weather-temperature">19 &#8451</span>
+                        </div>
                     </div>
                     <div class="currently__by-hour-weather">
                         <img src="./images/weather-status/scatteredClouds.png" alt="cloudy"
                             class="currently__hour-weather-icon">
-                        <span class="currently__weather-time">00:00</span>
-                        <span class="currently__weather-temperature">19 &#8451</span>
+                        <div class="currently__text-column">
+                            <span class="currently__weather-time">00:00</span>
+                            <span class="currently__weather-temperature">19 &#8451</span>
+                        </div>
                     </div>
                     <div class="currently__by-hour-weather">
                         <img src="./images/weather-status/scatteredClouds.png" alt="cloudy"
                             class="currently__hour-weather-icon">
-                        <span class="currently__weather-time">00:00</span>
-                        <span class="currently__weather-temperature">19 &#8451</span>
+                        <div class="currently__text-column">
+                            <span class="currently__weather-time">00:00</span>
+                            <span class="currently__weather-temperature">19 &#8451</span>
+                        </div>
+                    </div>
+                    <div class="currently__by-hour-weather currently__by-hour-weather_active">
+                        <img src="./images/weather-status/clearDay.png" alt="clear"
+                            class="currently__hour-weather-icon">
+                        <div class="currently__text-column">
+                            <span class="currently__weather-time">00:00</span>
+                            <span class="currently__weather-temperature">19 &#8451</span>
+                        </div>
                     </div>
                     <div class="currently__by-hour-weather">
                         <img src="./images/weather-status/clearDay.png" alt="clear"
                             class="currently__hour-weather-icon">
-                        <span class="currently__weather-time">00:00</span>
-                        <span class="currently__weather-temperature">19 &#8451</span>
-                    </div>
-                    <div class="currently__by-hour-weather">
-                        <img src="./images/weather-status/clearDay.png" alt="clear"
-                            class="currently__hour-weather-icon">
-                        <span class="currently__weather-time">00:00</span>
-                        <span class="currently__weather-temperature">19 &#8451</span>
+                        <div class="currently__text-column">
+                            <span class="currently__weather-time">00:00</span>
+                            <span class="currently__weather-temperature">19 &#8451</span>
+                        </div>
                     </div>
                     <div class="currently__by-hour-weather">
                         <img src="./images/weather-status/clearNight.png" alt="clear"
                             class="currently__hour-weather-icon">
-                        <span class="currently__weather-time">00:00</span>
-                        <span class="currently__weather-temperature">19 &#8451</span>
+                        <div class="currently__text-column">
+                            <span class="currently__weather-time">00:00</span>
+                            <span class="currently__weather-temperature">19 &#8451</span>
+                        </div>
                     </div>
                     <div class="currently__by-hour-weather">
                         <img src="./images/weather-status/fewCloudsNight.png" alt="few-cloud"
                             class="currently__hour-weather-icon">
-                        <span class="currently__weather-time">00:00</span>
-                        <span class="currently__weather-temperature">19 &#8451</span>
+                        <div class="currently__text-column">
+                            <span class="currently__weather-time">00:00</span>
+                            <span class="currently__weather-temperature">19 &#8451</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -124,7 +142,8 @@
             <div class="future">
                 <!-- future weather day 1 -->
                 <div class="future__item">
-                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon" id="future__weather-status1">
+                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon"
+                        id="future__weather-status1">
                     <div class="future__column">
                         <h3 class="future__headline" id="future__day1">Tomorow</h3>
                         <span class="future__text-row">
@@ -160,11 +179,13 @@
                 </div>
                 <!-- future weather day 2 -->
                 <div class="future__item">
-                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon" id="future__weather-status2">
+                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon"
+                        id="future__weather-status2">
                     <div class="future__column">
                         <h3 class="future__headline" id="future__day2">Tomorow</h3>
                         <span class="future__text-row">
-                            <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction" id="future__wind-direction2">
+                            <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction"
+                                id="future__wind-direction2">
                             <p class="future__text">Wind: </p>
                             <p class="future__wind-speed" id="future__wind-speed2">8 km/h</p>
                         </span>
@@ -195,11 +216,13 @@
                 </div>
                 <!-- future weather day 3 -->
                 <div class="future__item">
-                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon" id="future__weather-status3">
+                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon"
+                        id="future__weather-status3">
                     <div class="future__column">
                         <h3 class="future__headline" id="future__day3">Tomorow</h3>
                         <span class="future__text-row">
-                            <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction" id="future__wind-direction3">
+                            <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction"
+                                id="future__wind-direction3">
                             <p class="future__text">Wind: </p>
                             <p class="future__wind-speed" id="future__wind-speed3">8 km/h</p>
                         </span>
@@ -230,11 +253,13 @@
                 </div>
                 <!-- future weather day 4 -->
                 <div class="future__item">
-                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon" id="future__weather-status4">
+                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon"
+                        id="future__weather-status4">
                     <div class="future__column">
                         <h3 class="future__headline" id="future__day4">Tomorow</h3>
                         <span class="future__text-row">
-                            <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction" id="future__wind-direction4">
+                            <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction"
+                                id="future__wind-direction4">
                             <p class="future__text">Wind: </p>
                             <p class="future__wind-speed" id="future__wind-speed4">8 km/h</p>
                         </span>
@@ -265,11 +290,13 @@
                 </div>
                 <!-- future weather day 5 -->
                 <div class="future__item">
-                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon" id="future__weather-status5">
+                    <img src="./images/weather-status/fewCloudsDay.png" alt="weather" class="future__weather-icon"
+                        id="future__weather-status5">
                     <div class="future__column">
                         <h3 class="future__headline" id="future__day5">Tomorow</h3>
                         <span class="future__text-row">
-                            <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction" id="future__wind-direction5">
+                            <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction"
+                                id="future__wind-direction5">
                             <p class="future__text">Wind: </p>
                             <p class="future__wind-speed" id="future__wind-speed5">8 km/h</p>
                         </span>
