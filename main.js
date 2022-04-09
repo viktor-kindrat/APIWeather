@@ -93,9 +93,9 @@ let toCamelCase = (str) => {
 
 let setTheBg = (temp) => {
     if (temp <= 0) {
-        $('.wrap').css('background', 'linear-gradient(90.52deg, #74EBD5 0.33%, #9FACE6 99.44%)');
-    } else if (temp > 0 && temp <= 20) {
         $('.wrap').css('background', 'linear-gradient(90.9deg, #E0C3FC 0.73%, #8EC5FC 99.22%)');
+    } else if (temp > 0 && temp <= 20) {
+        $('.wrap').css('background', 'linear-gradient(90.52deg, #74EBD5 0.33%, #9FACE6 99.44%)');
     } else if (temp > 20) {
         $('.wrap').css('background', 'linear-gradient(270.5deg, #FFF1A3 0.42%, #FA709A 98.36%)');
     }
