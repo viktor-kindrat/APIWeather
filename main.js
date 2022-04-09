@@ -21,6 +21,7 @@ let hourMask = (hour, min) => {
         }
     }
 }
+let weekDays = ['null', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 let time = new Date();
 let currentMin = time.getMinutes();
@@ -30,8 +31,25 @@ setInterval(() => {
     time = new Date();
     currentMin = time.getMinutes();
     currentHours = time.getHours();
+    console.log(time.getDay());
     $('#current__time').html(hourMask(currentHours, currentMin));
 }, 1000)
+
+let setDays = (num) => {
+    let index = num + 1;
+    for(let i = 2; i != 6; i++){
+        if (index != 8) {
+            $('#future__day' + i).html(weekDays[index]);
+            index++;
+        } else {
+            index = 1;
+            $('#future__day' + i).html(weekDays[index]);
+            index = 2;
+        }
+    }
+}
+
+setDays(time.getDay());
 
 let setHours = (hours, min) => {
     let currentHour = hours + 2;
