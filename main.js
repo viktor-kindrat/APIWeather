@@ -150,7 +150,8 @@ let setTheIcon = (id, sunrise, sunset, timezone) => {
 let setHourlyIcons = (path, sunrise, sunset, timezone) => {
     let num = 0;
     for (let i = 0; i != 8; i++) {
-        $('#currently__hour-weather-icon' + i).attr('src', setTheIcon(path[num].weather[0].id, sunrise, sunset, timezone));
+        $('#currently__hour-weather-icon' + i).css('background', 'url("' + setTheIcon(path[num].weather[0].id, sunrise, sunset, timezone) + '") center center no-repeat no-repeat');
+        $('#currently__hour-weather-icon' + i).css('backgroundSize', 'contain');
         num = num + 2;
     }
     return true
@@ -211,7 +212,8 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
                             $('#future__max-temp' + i).html((data.daily[i].temp.max - 273).toFixed(0) + '&#8451');
                             $('#future__min-temp' + i).html((data.daily[i].temp.min - 273).toFixed(0) + '&#8451');
 
-                            $('#future__weather-status' + i).attr('src', setTheIcon(data.daily[i].weather[0].id, sunrise, sunset, timesone));
+                            $('#future__weather-status' + i).css('background', 'url("' + setTheIcon(data.daily[i].weather[0].id, sunrise, sunset, timesone) + '") center center no-repeat no-repeat');
+                            $('#future__weather-status' + i).css('backgroundSize', 'contain');
 
                             let timezone = new Date(data.timezone_offset);
                             let thisSunrise = new Date(data.daily[i].sunrise);

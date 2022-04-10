@@ -73,7 +73,7 @@
 /* left part styles  */
 .left {
     width: 50%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +81,8 @@
 }
 
 .currently {
-    height: 100%;
+    min-height: 100%;
+    max-height: 150%;
     width: 100%;
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0px 60px 47px -47px rgba(0, 0, 0, 0.25);
@@ -277,7 +278,7 @@
 }
 
 .currently__by-hour-weather {
-    height: 120px;
+    height: 90px;
     width: 10%;
     display: flex;
     flex-direction: column;
@@ -290,12 +291,11 @@
 }
 
 .currently__hour-weather-icon {
+    height: 50px;
     width: 100%;
     padding-bottom: 5px;
-}
-
-.currently__hour-weather-icon[src="./images/weather-status/scatteredClouds.png"] {
-    padding-top: 12px;
+    background-size: 10%;
+    background: url('./images/weather-status/brokenClouds.png');
 }
 
 .currently__by-hour-weather_active {
@@ -311,7 +311,7 @@
 /* right part styles  */
 .right {
     width: 50%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -346,9 +346,13 @@
 }
 
 .future__weather-icon {
-    max-height: 100%;
-    width: 20%;
+    height: 90px;
+    width: 90px;
     padding: 15px;
+    background-size: contain;
+    background: url('./images/weather-status/rainDay.png') center center no-repeat no-repeat;
+    margin-right: 15px;
+    align-self: center;
 }
 
 .future__column {
@@ -565,11 +569,5 @@
         width: 100%;
         align-items: center;
         justify-content: center;
-    }
-
-    .future__weather-icon {
-        height: 70%;
-        width: auto;
-        align-self: center;
     }
 }
