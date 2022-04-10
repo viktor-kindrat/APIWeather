@@ -34,7 +34,7 @@ setInterval(() => {
 }, 1000)
 
 let setDays = (num) => {
-    let index = num + 1;
+    let index = num + 2;
     for (let i = 2; i != 6; i++) {
         if (index != 8) {
             $('#future__day' + i).html(weekDays[index]);
