@@ -255,7 +255,6 @@ $('#find__btn').click(function () {
     })
     $('.find__input').val('')
     $('#find').css('display', 'none');
-    $('#currently__city').html(city)
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
         .then(res => {
             return res.json()
@@ -281,6 +280,8 @@ $('#find__btn').click(function () {
             $('#currently__temperature').html((data.main.temp - 273).toFixed(1) + '&#8451');
             setTheBg((data.main.temp - 273).toFixed(0))
             console.log(data);
+
+            $('#currently__city').html(city + '<img src="https://countryflagsapi.com/svg/' + data.sys.country + '" alt="flag" class="currently__flag">')
 
             fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + coords.lat + '&lon=' + coords.lon + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
                 .then(res => {
