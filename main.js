@@ -173,7 +173,7 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
                 coords.lat = data.coord.lat;
                 coords.lon = data.coord.lon;
 
-                $('#currently__wind-speed').html(data.wind.speed * 3.6 + ' km/h')
+                $('#currently__wind-speed').html((data.wind.speed * 3.6).toFixed(1) + ' km/h')
                 $('#currently__wind-direction').css('transform', 'rotate(' + data.wind.deg + 'deg)');
 
                 $('#current__humidity').html(data.main.humidity + '%');
@@ -206,7 +206,7 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
                         $('#currently__min-temp').html((data.daily['0'].temp.min - 273).toFixed(1) + '&#8451');
                         $('#preloader').fadeToggle(300);
                         for (let i = 1; i != 6; i++) {
-                            $('#future__wind-speed' + i).html(data.daily[i].wind_speed + ' m/s')
+                            $('#future__wind-speed' + i).html((data.daily[i].wind_speed * 3.6).toFixed(1) + ' km/h');
                             $('#future__wind-direction' + i).css('transform', 'rotate(' + data.daily[i].wind_deg + 'deg)');
 
                             $('#future__max-temp' + i).html((data.daily[i].temp.max - 273).toFixed(0) + '&#8451');
@@ -265,7 +265,7 @@ $('#find__btn').click(function () {
             coords.lat = data.coord.lat;
             coords.lon = data.coord.lon;
 
-            $('#currently__wind-speed').html(data.wind.speed * 3.6 + ' km/h')
+            $('#currently__wind-speed').html((data.wind.speed * 3.6).toFixed(1) + ' km/h')
             $('#currently__wind-direction').css('transform', 'rotate(' + data.wind.deg + 'deg)');
 
             $('#current__humidity').html(data.main.humidity + '%');
@@ -300,7 +300,7 @@ $('#find__btn').click(function () {
                     $('#currently__min-temp').html((data.daily['0'].temp.min - 273).toFixed(1) + '&#8451');
                     $('#preloader').fadeToggle(300);
                     for (let i = 1; i != 6; i++) {
-                        $('#future__wind-speed' + i).html(data.daily[i].wind_speed + ' m/s')
+                        $('#future__wind-speed' + i).html((data.daily[i].wind_speed * 3.6).toFixed(1) + ' km/h');
                         $('#future__wind-direction' + i).css('transform', 'rotate(' + data.daily[i].wind_deg + 'deg)');
 
                         $('#future__max-temp' + i).html((data.daily[i].temp.max - 273).toFixed(0) + '&#8451');
