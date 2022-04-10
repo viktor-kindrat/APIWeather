@@ -105,16 +105,16 @@ let setTheIcon = (id, sunrise, sunset, timezone) => {
     if (id >= 200 && id <= 232) {
         return './images/weather-status/thunderstorm.png'
     } else if (id >= 300 && id <= 321) {
-        if (currentHours > sunrise.getHours() + timezone.getHours() && currentHours < sunset.getHours() + timezone.getHours()) {
+        if (currentHours > sunrise.getHours() + timezone.getHours()) {
             return './images/weather-status/rainDay.png';
-        } else {
+        } else if (currentHours < sunset.getHours() + timezone.getHours()){
             return './images/weather-status/rainNight.png';
         }
     } else if (id >= 500 && id <= 531) {
         if (id >= 500 && id <= 504) {
-            if (currentHours > sunrise.getHours() + timezone.getHours() && currentHours < sunset.getHours() + timezone.getHours()) {
+            if (currentHours > sunrise.getHours() + timezone.getHours()) {
                 return './images/weather-status/rainDay.png'
-            } else {
+            } else if (currentHours < sunset.getHours() + timezone.getHours()){
                 return './images/weather-status/rainNight.png'
             }
         } else if (id === 511) {
@@ -127,16 +127,16 @@ let setTheIcon = (id, sunrise, sunset, timezone) => {
     } else if (id >= 701 && id <= 781) {
         return './images/weather-status/mist.png'
     } else if (id === 800) {
-        if (currentHours > sunrise.getHours() + timezone.getHours() && currentHours < sunset.getHours() + timezone.getHours()) {
+        if (currentHours > sunrise.getHours() + timezone.getHours()) {
             return './images/weather-status/clearDay.png'
-        } else {
+        } else if (currentHours < sunset.getHours() + timezone.getHours()){
             return './images/weather-status/clearNight.png'
         }
     } else if (id >= 801 && id <= 804) {
         if (id === 801) {
-            if (currentHours > sunrise.getHours() + timezone.getHours() && currentHours < sunset.getHours() + timezone.getHours()) {
+            if (currentHours > sunrise.getHours() + timezone.getHours()) {
                 return './images/weather-status/fewCloudsDay.png'
-            } else {
+            } else if (currentHours < sunset.getHours() + timezone.getHours()){
                 return './images/weather-status/fewCloudsNight.png'
             }
         } else if (id === 802) {
