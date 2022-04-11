@@ -684,3 +684,15 @@
         align-items: center;
     }
 }
+@media screen and (max-height: 569px){
+    .find {
+        height: 60%;
+        top: 20%;
+    }
+}
+@media screen and (max-height: 262px){
+    .find {
+        height: 90%;
+        top: 5%;
+    }
+}
