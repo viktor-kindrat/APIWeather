@@ -4,6 +4,7 @@ let coords = {
 };
 let temperature = 0;
 let city = '';
+$('.alert').fadeToggle(0);
 
 let hourMask = (hour, min) => {
     if (hour <= 9) {
@@ -93,11 +94,14 @@ let toCamelCase = (str) => {
 
 let setTheBg = (temp) => {
     if (temp <= 0) {
-        $('.wrap').css('background', 'linear-gradient(90.9deg, #E0C3FC 0.73%, #8EC5FC 99.22%)');
+        $('.wrap').css('background', '#9EAEE6 url("./images/backgounds/cold.svg") no-repeat no-repeat center 0%');
+        $('.wrap').css('backgroundSize', '100%');
     } else if (temp > 0 && temp <= 20) {
-        $('.wrap').css('background', 'linear-gradient(90.52deg, #74EBD5 0.33%, #9FACE6 99.44%)');
+        $('.wrap').css('background', '#C1C3FB url("./images/backgounds/normal.svg") no-repeat no-repeat center 0%');
+        $('.wrap').css('backgroundSize', '100%');
     } else if (temp > 20) {
-        $('.wrap').css('background', 'linear-gradient(270.5deg, #FFF1A3 0.42%, #FA709A 98.36%)');
+        $('.wrap').css('background', '#FB7597 url("./images/backgounds/hot.svg") no-repeat no-repeat center 0%');
+        $('.wrap').css('backgroundSize', '100%');
     }
 }
 
@@ -107,14 +111,14 @@ let setTheIcon = (id, sunrise, sunset, timezone) => {
     } else if (id >= 300 && id <= 321) {
         if (currentHours > sunrise.getHours() + timezone.getHours()) {
             return './images/weather-status/rainDay.png';
-        } else if (currentHours < sunset.getHours() + timezone.getHours()){
+        } else if (currentHours < sunset.getHours() + timezone.getHours()) {
             return './images/weather-status/rainNight.png';
         }
     } else if (id >= 500 && id <= 531) {
         if (id >= 500 && id <= 504) {
             if (currentHours > sunrise.getHours() + timezone.getHours()) {
                 return './images/weather-status/rainDay.png'
-            } else if (currentHours < sunset.getHours() + timezone.getHours()){
+            } else if (currentHours < sunset.getHours() + timezone.getHours()) {
                 return './images/weather-status/rainNight.png'
             }
         } else if (id === 511) {
@@ -129,14 +133,14 @@ let setTheIcon = (id, sunrise, sunset, timezone) => {
     } else if (id === 800) {
         if (currentHours > sunrise.getHours() + timezone.getHours()) {
             return './images/weather-status/clearDay.png'
-        } else if (currentHours < sunset.getHours() + timezone.getHours()){
+        } else if (currentHours < sunset.getHours() + timezone.getHours()) {
             return './images/weather-status/clearNight.png'
         }
     } else if (id >= 801 && id <= 804) {
         if (id === 801) {
             if (currentHours > sunrise.getHours() + timezone.getHours()) {
                 return './images/weather-status/fewCloudsDay.png'
-            } else if (currentHours < sunset.getHours() + timezone.getHours()){
+            } else if (currentHours < sunset.getHours() + timezone.getHours()) {
                 return './images/weather-status/fewCloudsNight.png'
             }
         } else if (id === 802) {
@@ -223,9 +227,22 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
                         }
                     })
             });
+    })
+    .catch(err => {
+        $('.alert').fadeToggle(300);
+        setTimeout(() => {
+            $('.alert').fadeToggle(300);
+        }, 3000);
+        $('.alert').html('Failed to auto-get your city');
+        $('#preloader').fadeToggle(300);
+        $('.left').hide(300);
+        $('.right').hide(300);
+        setTimeout(() => {
+            $('#find').css('display', 'flex');
+        }, 300);
     });
 
-$('.currently__city').click(function () {
+$('.currently__city').click(function() {
     $('.left').hide(300);
     $('.right').hide(300);
     setTimeout(() => {
@@ -233,13 +250,13 @@ $('.currently__city').click(function () {
     }, 300);
 })
 
-$('.find__input').focus(function () {
+$('.find__input').focus(function() {
     $('.find__placeholder').css({
         'top': '-5px',
         'opacity': '1',
     })
 })
-$('.find__input').blur(function () {
+$('.find__input').blur(function() {
     if ($(this).val() === '') {
         $('.find__placeholder').css({
             'top': '35px',
@@ -248,7 +265,7 @@ $('.find__input').blur(function () {
     }
 })
 
-$('#find__btn').click(function () {
+$('#find__btn').click(function() {
     $('#preloader').fadeToggle(300);
     city = firstToUpper($('.find__input').val());
     $('.find__placeholder').css({
@@ -317,5 +334,18 @@ $('#find__btn').click(function () {
                     $('.left').show(300);
                     $('.right').show(300);
                 })
+        })
+        .catch(err => {
+            $('.alert').fadeToggle(300);
+            setTimeout(() => {
+                $('.alert').fadeToggle(300);
+            }, 3000);
+            $('.alert').html('Your city is not finded!');
+            $('#preloader').fadeToggle(300);
+            $('.left').hide(300);
+            $('.right').hide(300);
+            setTimeout(() => {
+                $('#find').css('display', 'flex');
+            }, 300);
         });
 })

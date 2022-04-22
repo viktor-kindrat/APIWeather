@@ -7,22 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=7">
     <title>Weather Forecast</title>
     <!-- jquery  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- favicon  -->
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <!-- fonts  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- styles  -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- alert  -->
+    <div class="alert">
+        Alert text!
+    </div>
     <!-- preloader  -->
     <div class="preloarer" id="preloader">
         <div class="preloader__circle">Loading</div>
@@ -37,122 +37,121 @@
                     <p class="currently__time" id="current__time"></p>
                     <div class="currently__text-row">
                         <span class="currently__weather" id="currently__weather">Sunny,</span>
-                        <span class="currently__temperature" id="currently__temperature"></span>
-                    </div>
-                </span>
-                <div class="currently__wind-group">
-                    <img src="./images/img-description/windArrow.png" alt="dir" class="currently__wind-direction"
-                        id="currently__wind-direction">
-                    <p class="currently__text">Wind:</p>
-                    <span class="currently__wind-speed" id="currently__wind-speed"> 15 km/h</span>
+                <span class="currently__temperature" id="currently__temperature"></span>
+            </div>
+            </span>
+            <div class="currently__wind-group">
+                <img src="./images/img-description/windArrow.png" alt="dir" class="currently__wind-direction" id="currently__wind-direction">
+                <p class="currently__text">Wind:</p>
+                <span class="currently__wind-speed" id="currently__wind-speed"> 15 km/h</span>
+            </div>
+            <div class="currently__row">
+                <div class="currently__info">
+                    <img src="./images/img-description/sunrise.png" alt="sunrise" class="currently__info-img">
+                    <h3 class="currently__info-headline">Sunrise</h3>
+                    <p class="currently__info-text" id="currently__sunrise"></p>
                 </div>
-                <div class="currently__row">
-                    <div class="currently__info">
-                        <img src="./images/img-description/sunrise.png" alt="sunrise" class="currently__info-img">
-                        <h3 class="currently__info-headline">Sunrise</h3>
-                        <p class="currently__info-text" id="currently__sunrise"></p>
-                    </div>
-                    <div class="currently__info">
-                        <img src="./images/img-description/max.png" alt="max" class="currently__info-img">
-                        <h3 class="currently__info-headline" id="currently__max-temp"></h3>
-                    </div>
-                    <div class="currently__info">
-                        <img src="./images/img-description/min.png" alt="min" class="currently__info-img">
-                        <h3 class="currently__info-headline" id="currently__min-temp"></h3>
-                    </div>
-                    <div class="currently__info">
-                        <img src="./images/img-description/sunset.png" alt="sunset" class="currently__info-img">
-                        <h3 class="currently__info-headline">Sunset</h3>
-                        <p class="currently__info-text" id="currently__sunset"></p>
+                <div class="currently__info">
+                    <img src="./images/img-description/max.png" alt="max" class="currently__info-img">
+                    <h3 class="currently__info-headline" id="currently__max-temp"></h3>
+                </div>
+                <div class="currently__info">
+                    <img src="./images/img-description/min.png" alt="min" class="currently__info-img">
+                    <h3 class="currently__info-headline" id="currently__min-temp"></h3>
+                </div>
+                <div class="currently__info">
+                    <img src="./images/img-description/sunset.png" alt="sunset" class="currently__info-img">
+                    <h3 class="currently__info-headline">Sunset</h3>
+                    <p class="currently__info-text" id="currently__sunset"></p>
+                </div>
+            </div>
+            <hr class="currently__hr">
+            <div class="currently__row">
+                <div class="currently__text-row">
+                    <span class="currently__text">Humidity:</span>
+                    <span class="currently__humidity" id="current__humidity"></span>
+                </div>
+                <div class="currently__text-row">
+                    <span class="currently__text">Pressure:</span>
+                    <span class="currently__humidity" id="current__pressure"></span>
+                </div>
+            </div>
+            <hr class="currently__hr">
+            <div class="currently__row">
+                <div class="currently__by-hour-weather currently__by-hour-weather_active">
+                    <div class="currently__hour-weather-icon" id="currently__hour-weather-icon0"></div>
+                    <div class="currently__text-column">
+                        <span class="currently__weather-time" id="currentlu__hour0">00:00</span>
+                        <span class="currently__weather-temperature" id="currently__temperature0">19 &#8451</span>
                     </div>
                 </div>
-                <hr class="currently__hr">
-                <div class="currently__row">
-                    <div class="currently__text-row">
-                        <span class="currently__text">Humidity:</span>
-                        <span class="currently__humidity" id="current__humidity"></span>
-                    </div>
-                    <div class="currently__text-row">
-                        <span class="currently__text">Pressure:</span>
-                        <span class="currently__humidity" id="current__pressure"></span>
+                <div class="currently__by-hour-weather">
+                    <div class="currently__hour-weather-icon" id="currently__hour-weather-icon1"></div>
+                    <div class="currently__text-column">
+                        <span class="currently__weather-time" id="currentlu__hour1">05:00</span>
+                        <span class="currently__weather-temperature" id="currently__temperature1">19 &#8451</span>
                     </div>
                 </div>
-                <hr class="currently__hr">
-                <div class="currently__row">
-                    <div class="currently__by-hour-weather currently__by-hour-weather_active">
-                        <div class="currently__hour-weather-icon" id="currently__hour-weather-icon0"></div>
-                        <div class="currently__text-column">
-                            <span class="currently__weather-time" id="currentlu__hour0">00:00</span>
-                            <span class="currently__weather-temperature" id="currently__temperature0">19 &#8451</span>
-                        </div>
+                <div class="currently__by-hour-weather">
+                    <div class="currently__hour-weather-icon" id="currently__hour-weather-icon2"></div>
+                    <div class="currently__text-column">
+                        <span class="currently__weather-time" id="currentlu__hour2">10:00</span>
+                        <span class="currently__weather-temperature" id="currently__temperature2">19 &#8451</span>
                     </div>
-                    <div class="currently__by-hour-weather">
-                        <div class="currently__hour-weather-icon" id="currently__hour-weather-icon1"></div>
-                        <div class="currently__text-column">
-                            <span class="currently__weather-time" id="currentlu__hour1">05:00</span>
-                            <span class="currently__weather-temperature" id="currently__temperature1">19 &#8451</span>
-                        </div>
+                </div>
+                <div class="currently__by-hour-weather">
+                    <div class="currently__hour-weather-icon" id="currently__hour-weather-icon3"></div>
+                    <div class="currently__text-column">
+                        <span class="currently__weather-time" id="currentlu__hour3">15:00</span>
+                        <span class="currently__weather-temperature" id="currently__temperature3">19 &#8451</span>
                     </div>
-                    <div class="currently__by-hour-weather">
-                        <div class="currently__hour-weather-icon" id="currently__hour-weather-icon2"></div>
-                        <div class="currently__text-column">
-                            <span class="currently__weather-time" id="currentlu__hour2">10:00</span>
-                            <span class="currently__weather-temperature" id="currently__temperature2">19 &#8451</span>
-                        </div>
+                </div>
+                <div class="currently__by-hour-weather">
+                    <div class="currently__hour-weather-icon" id="currently__hour-weather-icon4"></div>
+                    <div class="currently__text-column">
+                        <span class="currently__weather-time" id="currentlu__hour4">18:00</span>
+                        <span class="currently__weather-temperature" id="currently__temperature4">19 &#8451</span>
                     </div>
-                    <div class="currently__by-hour-weather">
-                        <div class="currently__hour-weather-icon" id="currently__hour-weather-icon3"></div>
-                        <div class="currently__text-column">
-                            <span class="currently__weather-time" id="currentlu__hour3">15:00</span>
-                            <span class="currently__weather-temperature" id="currently__temperature3">19 &#8451</span>
-                        </div>
+                </div>
+                <div class="currently__by-hour-weather">
+                    <div class="currently__hour-weather-icon" id="currently__hour-weather-icon5"></div>
+                    <div class="currently__text-column">
+                        <span class="currently__weather-time" id="currentlu__hour5">20:00</span>
+                        <span class="currently__weather-temperature" id="currently__temperature5">19 &#8451</span>
                     </div>
-                    <div class="currently__by-hour-weather">
-                        <div class="currently__hour-weather-icon" id="currently__hour-weather-icon4"></div>
-                        <div class="currently__text-column">
-                            <span class="currently__weather-time" id="currentlu__hour4">18:00</span>
-                            <span class="currently__weather-temperature" id="currently__temperature4">19 &#8451</span>
-                        </div>
+                </div>
+                <div class="currently__by-hour-weather">
+                    <div class="currently__hour-weather-icon" id="currently__hour-weather-icon6"></div>
+                    <div class="currently__text-column">
+                        <span class="currently__weather-time" id="currentlu__hour6">22:00</span>
+                        <span class="currently__weather-temperature" id="currently__temperature6">19 &#8451</span>
                     </div>
-                    <div class="currently__by-hour-weather">
-                        <div class="currently__hour-weather-icon" id="currently__hour-weather-icon5"></div>
-                        <div class="currently__text-column">
-                            <span class="currently__weather-time" id="currentlu__hour5">20:00</span>
-                            <span class="currently__weather-temperature" id="currently__temperature5">19 &#8451</span>
-                        </div>
-                    </div>
-                    <div class="currently__by-hour-weather">
-                        <div class="currently__hour-weather-icon" id="currently__hour-weather-icon6"></div>
-                        <div class="currently__text-column">
-                            <span class="currently__weather-time" id="currentlu__hour6">22:00</span>
-                            <span class="currently__weather-temperature" id="currently__temperature6">19 &#8451</span>
-                        </div>
-                    </div>
-                    <div class="currently__by-hour-weather">
-                        <div class="currently__hour-weather-icon" id="currently__hour-weather-icon7"></div>
-                        <div class="currently__text-column">
-                            <span class="currently__weather-time" id="currentlu__hour7">00:00</span>
-                            <span class="currently__weather-temperature" id="currently__temperature7">19 &#8451</span>
-                        </div>
+                </div>
+                <div class="currently__by-hour-weather">
+                    <div class="currently__hour-weather-icon" id="currently__hour-weather-icon7"></div>
+                    <div class="currently__text-column">
+                        <span class="currently__weather-time" id="currentlu__hour7">00:00</span>
+                        <span class="currently__weather-temperature" id="currently__temperature7">19 &#8451</span>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- right part  -->
-        <section class="right">
-            <div class="future">
-                <!-- future weather day 1 -->
-                <div class="future__item">
-                    <div class="future__weather-icon" id="future__weather-status1"></div>
-                    <div class="future__column">
-                        <h3 class="future__headline" id="future__day1">Tomorow</h3>
-                        <span class="future__text-row">
+    </div>
+    </section>
+    <!-- right part  -->
+    <section class="right">
+        <div class="future">
+            <!-- future weather day 1 -->
+            <div class="future__item">
+                <div class="future__weather-icon" id="future__weather-status1"></div>
+                <div class="future__column">
+                    <h3 class="future__headline" id="future__day1">Tomorow</h3>
+                    <span class="future__text-row">
                             <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction"
                                 id="future__wind-direction1">
                             <p class="future__text">Wind: </p>
                             <p class="future__wind-speed" id="future__wind-speed1">8 km/h</p>
                         </span>
-                        <span class="future__text-row">
+                    <span class="future__text-row">
                             <div class="future__column future__column_centered">
                                 <img src="./images/img-description/max.png" alt="max" class="future__info-img">
                                 <p class="future__text" id="future__max-temp1">19 &#8451</p>
@@ -162,33 +161,33 @@
                                 <p class="future__text" id="future__min-temp1">5 &#8451</p>
                             </div>
                         </span>
+                </div>
+                <div class="future__vertical-hr"></div>
+                <div class="future__row">
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
+                        <h3 class="future__headline">Sunrise</h3>
+                        <p class="future__text" id="future__sunrise1">07:00</p>
                     </div>
-                    <div class="future__vertical-hr"></div>
-                    <div class="future__row">
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
-                            <h3 class="future__headline">Sunrise</h3>
-                            <p class="future__text" id="future__sunrise1">07:00</p>
-                        </div>
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
-                            <h3 class="future__headline">Sunset</h3>
-                            <p class="future__text" id="future__sunset1">19:00</p>
-                        </div>
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
+                        <h3 class="future__headline">Sunset</h3>
+                        <p class="future__text" id="future__sunset1">19:00</p>
                     </div>
                 </div>
-                <!-- future weather day 2 -->
-                <div class="future__item">
-                    <div class="future__weather-icon" id="future__weather-status2"></div>
-                    <div class="future__column">
-                        <h3 class="future__headline" id="future__day2">Tomorow</h3>
-                        <span class="future__text-row">
+            </div>
+            <!-- future weather day 2 -->
+            <div class="future__item">
+                <div class="future__weather-icon" id="future__weather-status2"></div>
+                <div class="future__column">
+                    <h3 class="future__headline" id="future__day2">Tomorow</h3>
+                    <span class="future__text-row">
                             <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction"
                                 id="future__wind-direction2">
                             <p class="future__text">Wind: </p>
                             <p class="future__wind-speed" id="future__wind-speed2">8 km/h</p>
                         </span>
-                        <span class="future__text-row">
+                    <span class="future__text-row">
                             <div class="future__column future__column_centered">
                                 <img src="./images/img-description/max.png" alt="max" class="future__info-img">
                                 <p class="future__text" id="future__max-temp2">19 &#8451</p>
@@ -198,33 +197,33 @@
                                 <p class="future__text" id="future__min-temp2">5 &#8451</p>
                             </div>
                         </span>
+                </div>
+                <div class="future__vertical-hr"></div>
+                <div class="future__row">
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
+                        <h3 class="future__headline">Sunrise</h3>
+                        <p class="future__text" id="future__sunrise2">07:00</p>
                     </div>
-                    <div class="future__vertical-hr"></div>
-                    <div class="future__row">
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
-                            <h3 class="future__headline">Sunrise</h3>
-                            <p class="future__text" id="future__sunrise2">07:00</p>
-                        </div>
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
-                            <h3 class="future__headline">Sunset</h3>
-                            <p class="future__text" id="future__sunset2">19:00</p>
-                        </div>
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
+                        <h3 class="future__headline">Sunset</h3>
+                        <p class="future__text" id="future__sunset2">19:00</p>
                     </div>
                 </div>
-                <!-- future weather day 3 -->
-                <div class="future__item">
-                    <div class="future__weather-icon" id="future__weather-status3"></div>
-                    <div class="future__column">
-                        <h3 class="future__headline" id="future__day3">Tomorow</h3>
-                        <span class="future__text-row">
+            </div>
+            <!-- future weather day 3 -->
+            <div class="future__item">
+                <div class="future__weather-icon" id="future__weather-status3"></div>
+                <div class="future__column">
+                    <h3 class="future__headline" id="future__day3">Tomorow</h3>
+                    <span class="future__text-row">
                             <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction"
                                 id="future__wind-direction3">
                             <p class="future__text">Wind: </p>
                             <p class="future__wind-speed" id="future__wind-speed3">8 km/h</p>
                         </span>
-                        <span class="future__text-row">
+                    <span class="future__text-row">
                             <div class="future__column future__column_centered">
                                 <img src="./images/img-description/max.png" alt="max" class="future__info-img">
                                 <p class="future__text" id="future__max-temp3">19 &#8451</p>
@@ -234,33 +233,33 @@
                                 <p class="future__text" id="future__min-temp3">5 &#8451</p>
                             </div>
                         </span>
+                </div>
+                <div class="future__vertical-hr"></div>
+                <div class="future__row">
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
+                        <h3 class="future__headline">Sunrise</h3>
+                        <p class="future__text" id="future__sunrise3">07:00</p>
                     </div>
-                    <div class="future__vertical-hr"></div>
-                    <div class="future__row">
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
-                            <h3 class="future__headline">Sunrise</h3>
-                            <p class="future__text" id="future__sunrise3">07:00</p>
-                        </div>
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
-                            <h3 class="future__headline">Sunset</h3>
-                            <p class="future__text" id="future__sunset3">19:00</p>
-                        </div>
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
+                        <h3 class="future__headline">Sunset</h3>
+                        <p class="future__text" id="future__sunset3">19:00</p>
                     </div>
                 </div>
-                <!-- future weather day 4 -->
-                <div class="future__item">
-                    <div class="future__weather-icon" id="future__weather-status4"></div>
-                    <div class="future__column">
-                        <h3 class="future__headline" id="future__day4">Tomorow</h3>
-                        <span class="future__text-row">
+            </div>
+            <!-- future weather day 4 -->
+            <div class="future__item">
+                <div class="future__weather-icon" id="future__weather-status4"></div>
+                <div class="future__column">
+                    <h3 class="future__headline" id="future__day4">Tomorow</h3>
+                    <span class="future__text-row">
                             <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction"
                                 id="future__wind-direction4">
                             <p class="future__text">Wind: </p>
                             <p class="future__wind-speed" id="future__wind-speed4">8 km/h</p>
                         </span>
-                        <span class="future__text-row">
+                    <span class="future__text-row">
                             <div class="future__column future__column_centered">
                                 <img src="./images/img-description/max.png" alt="max" class="future__info-img">
                                 <p class="future__text" id="future__max-temp4">19 &#8451</p>
@@ -270,33 +269,33 @@
                                 <p class="future__text" id="future__min-temp4">5 &#8451</p>
                             </div>
                         </span>
+                </div>
+                <div class="future__vertical-hr"></div>
+                <div class="future__row">
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
+                        <h3 class="future__headline">Sunrise</h3>
+                        <p class="future__text" id="future__sunrise4">07:00</p>
                     </div>
-                    <div class="future__vertical-hr"></div>
-                    <div class="future__row">
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
-                            <h3 class="future__headline">Sunrise</h3>
-                            <p class="future__text" id="future__sunrise4">07:00</p>
-                        </div>
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
-                            <h3 class="future__headline">Sunset</h3>
-                            <p class="future__text" id="future__sunset4">19:00</p>
-                        </div>
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
+                        <h3 class="future__headline">Sunset</h3>
+                        <p class="future__text" id="future__sunset4">19:00</p>
                     </div>
                 </div>
-                <!-- future weather day 5 -->
-                <div class="future__item">
-                    <div class="future__weather-icon" id="future__weather-status5"></div>
-                    <div class="future__column">
-                        <h3 class="future__headline" id="future__day5">Tomorow</h3>
-                        <span class="future__text-row">
+            </div>
+            <!-- future weather day 5 -->
+            <div class="future__item">
+                <div class="future__weather-icon" id="future__weather-status5"></div>
+                <div class="future__column">
+                    <h3 class="future__headline" id="future__day5">Tomorow</h3>
+                    <span class="future__text-row">
                             <img src="./images/img-description/windArrow.png" alt="dir" class="future__wind-direction"
                                 id="future__wind-direction5">
                             <p class="future__text">Wind: </p>
                             <p class="future__wind-speed" id="future__wind-speed5">8 km/h</p>
                         </span>
-                        <span class="future__text-row">
+                    <span class="future__text-row">
                             <div class="future__column future__column_centered">
                                 <img src="./images/img-description/max.png" alt="max" class="future__info-img">
                                 <p class="future__text" id="future__max-temp5">19 &#8451</p>
@@ -306,29 +305,29 @@
                                 <p class="future__text" id="future__min-temp5">5 &#8451</p>
                             </div>
                         </span>
+                </div>
+                <div class="future__vertical-hr"></div>
+                <div class="future__row">
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
+                        <h3 class="future__headline">Sunrise</h3>
+                        <p class="future__text" id="future__sunrise5">07:00</p>
                     </div>
-                    <div class="future__vertical-hr"></div>
-                    <div class="future__row">
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunrise.png" alt="sunrise" class="future__sun-img">
-                            <h3 class="future__headline">Sunrise</h3>
-                            <p class="future__text" id="future__sunrise5">07:00</p>
-                        </div>
-                        <div class="future__sun-block">
-                            <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
-                            <h3 class="future__headline">Sunset</h3>
-                            <p class="future__text" id="future__sunset5">19:00</p>
-                        </div>
+                    <div class="future__sun-block">
+                        <img src="./images/img-description/sunset.png" alt="sunset" class="future__sun-img">
+                        <h3 class="future__headline">Sunset</h3>
+                        <p class="future__text" id="future__sunset5">19:00</p>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- input the city -->
-        <section class="find" id="find">
-            <div class="find__placeholder">Input your city</div>
-            <input type="text" class="find__input" id="find__input" autocomplete="off">
-            <button class="find__btn" id="find__btn">Find</button>
-        </section>
+        </div>
+    </section>
+    <!-- input the city -->
+    <section class="find" id="find">
+        <div class="find__placeholder">Input your city</div>
+        <input type="text" class="find__input" id="find__input" autocomplete="off">
+        <button class="find__btn" id="find__btn">Find</button>
+    </section>
     </div>
     <script src="main.js"></script>
 </body>
