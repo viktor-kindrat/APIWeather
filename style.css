@@ -381,8 +381,6 @@
     height: 90px;
     width: 90px;
     padding: 15px;
-    background-size: contain;
-    background: url('./images/weather-status/rainDay.png') center center no-repeat no-repeat;
     margin-right: 15px;
     align-self: center;
 }

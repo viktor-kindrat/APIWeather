@@ -69,7 +69,7 @@ let setHours = (hours, min) => {
 let setHourlyWeather = (path) => {
     let num = 0;
     for (let i = 0; i != 8; i++) {
-        $('#currently__temperature' + i).html((path[num].temp - 273).toFixed(0) + '&#8451')
+        $('#currently__temperature' + i).html((path[num].temp - 273).toFixed(0) + '&#176; C')
         num += 2;
     }
     return true
@@ -168,6 +168,8 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
     .then(data => {
         console.log(data);
         city = data.city;
+        localStorage.setItem('lastCity', city);
+        localStorage.setItem('lastFlag', '<img src="https://countryflagsapi.com/svg/' + data.country_name + '" alt="flag" class="currently__flag">')
         $('#currently__city').html(city + '<img src="https://countryflagsapi.com/svg/' + data.country_name + '" alt="flag" class="currently__flag">')
         fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
             .then(res => {
@@ -191,7 +193,7 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
 
                 $('#currently__weather-icon').attr('src', setTheIcon(data.weather['0'].id, sunrise, sunset, timesone));
                 $('#currently__weather').html(firstToUpper(data.weather['0'].description + ', '));
-                $('#currently__temperature').html((data.main.temp - 273).toFixed(1) + '&#8451');
+                $('#currently__temperature').html((data.main.temp - 273).toFixed(1) + '&#176; C');
                 setTheBg((data.main.temp - 273).toFixed(0))
                 console.log(data);
 
@@ -206,18 +208,20 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
                         let timesone = new Date(data.timezone_offset);
                         setHourlyWeather(data.hourly);
                         setHourlyIcons(data.hourly, sunrise, sunset, timesone)
-                        $('#currently__max-temp').html((data.daily['0'].temp.max - 273).toFixed(1) + '&#8451');
-                        $('#currently__min-temp').html((data.daily['0'].temp.min - 273).toFixed(1) + '&#8451');
+                        $('#currently__max-temp').html((data.daily['0'].temp.max - 273).toFixed(1) + '&#176; C');
+                        $('#currently__min-temp').html((data.daily['0'].temp.min - 273).toFixed(1) + '&#176; C');
                         $('#preloader').fadeToggle(300);
                         for (let i = 1; i != 6; i++) {
                             $('#future__wind-speed' + i).html((data.daily[i].wind_speed * 3.6).toFixed(1) + ' km/h');
                             $('#future__wind-direction' + i).css('transform', 'rotate(' + data.daily[i].wind_deg + 'deg)');
 
-                            $('#future__max-temp' + i).html((data.daily[i].temp.max - 273).toFixed(0) + '&#8451');
-                            $('#future__min-temp' + i).html((data.daily[i].temp.min - 273).toFixed(0) + '&#8451');
+                            $('#future__max-temp' + i).html((data.daily[i].temp.max - 273).toFixed(0) + '&#176; C');
+                            $('#future__min-temp' + i).html((data.daily[i].temp.min - 273).toFixed(0) + '&#176; C');
 
-                            $('#future__weather-status' + i).css('background', 'url("' + setTheIcon(data.daily[i].weather[0].id, sunrise, sunset, timesone) + '") center center no-repeat no-repeat');
-                            $('#future__weather-status' + i).css('backgroundSize', 'contain');
+                            $('#future__weather-status' + i).css({
+                                'background': 'url("' + setTheIcon(data.daily[i].weather[0].id, sunrise, sunset, timesone) + '") center center no-repeat no-repeat',
+                                'backgroundSize': 'contain'
+                            });
 
                             let timezone = new Date(data.timezone_offset);
                             let thisSunrise = new Date(data.daily[i].sunrise);
@@ -229,17 +233,82 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
             });
     })
     .catch(err => {
-        $('.alert').fadeToggle(300);
-        setTimeout(() => {
+        city = localStorage.getItem('lastCity') || '0';
+        $('#currently__city').html(city + localStorage.getItem('lastFlag'));
+        if (city != 0) {
+            fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
+                .then(res => {
+                    return res.json()
+                })
+                .then(data => {
+                    coords.lat = data.coord.lat;
+                    coords.lon = data.coord.lon;
+
+                    $('#currently__wind-speed').html((data.wind.speed * 3.6).toFixed(1) + ' km/h')
+                    $('#currently__wind-direction').css('transform', 'rotate(' + data.wind.deg + 'deg)');
+
+                    $('#current__humidity').html(data.main.humidity + '%');
+                    $('#current__pressure').html(data.main.pressure + ' hPa')
+
+                    let timesone = new Date(data.timezone);
+                    let sunrise = new Date(data.sys.sunrise);
+                    $('#currently__sunrise').html(hourMask(sunrise.getHours() + timesone.getHours(), sunrise.getMinutes()));
+                    let sunset = new Date(data.sys.sunset);
+                    $('#currently__sunset').html(hourMask(sunset.getHours() + timesone.getHours() + 12, sunset.getMinutes()));
+
+                    $('#currently__weather-icon').attr('src', setTheIcon(data.weather['0'].id, sunrise, sunset, timesone));
+                    $('#currently__weather').html(firstToUpper(data.weather['0'].description + ', '));
+                    $('#currently__temperature').html((data.main.temp - 273).toFixed(1) + '&#176; C');
+                    setTheBg((data.main.temp - 273).toFixed(0))
+                    console.log(data);
+
+                    fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + coords.lat + '&lon=' + coords.lon + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
+                        .then(res => {
+                            return res.json()
+                        })
+                        .then(data => {
+                            console.log(data);
+                            let sunrise = new Date(data.current.sunrise);
+                            let sunset = new Date(data.current.sunset);
+                            let timesone = new Date(data.timezone_offset);
+                            setHourlyWeather(data.hourly);
+                            setHourlyIcons(data.hourly, sunrise, sunset, timesone)
+                            $('#currently__max-temp').html((data.daily['0'].temp.max - 273).toFixed(1) + '&#176; C');
+                            $('#currently__min-temp').html((data.daily['0'].temp.min - 273).toFixed(1) + '&#176; C');
+                            $('#preloader').fadeToggle(300);
+                            for (let i = 1; i != 6; i++) {
+                                $('#future__wind-speed' + i).html((data.daily[i].wind_speed * 3.6).toFixed(1) + ' km/h');
+                                $('#future__wind-direction' + i).css('transform', 'rotate(' + data.daily[i].wind_deg + 'deg)');
+
+                                $('#future__max-temp' + i).html((data.daily[i].temp.max - 273).toFixed(0) + '&#176; C');
+                                $('#future__min-temp' + i).html((data.daily[i].temp.min - 273).toFixed(0) + '&#176; C');
+
+                                $('#future__weather-status' + i).css({
+                                    'background': 'url("' + setTheIcon(data.daily[i].weather[0].id, sunrise, sunset, timesone) + '") center center no-repeat no-repeat',
+                                    'backgroundSize': 'contain'
+                                });
+
+                                let timezone = new Date(data.timezone_offset);
+                                let thisSunrise = new Date(data.daily[i].sunrise);
+                                let thisSunset = new Date(data.daily[i].sunset);
+                                $('#future__sunrise' + i).html(hourMask(thisSunrise.getHours() + timezone.getHours(), thisSunrise.getMinutes()));
+                                $('#future__sunset' + i).html(hourMask(thisSunset.getHours() + timezone.getHours(), thisSunset.getMinutes()));
+                            }
+                        })
+                });
+        } else {
             $('.alert').fadeToggle(300);
-        }, 3000);
-        $('.alert').html('Failed to auto-get your city');
-        $('#preloader').fadeToggle(300);
-        $('.left').hide(300);
-        $('.right').hide(300);
-        setTimeout(() => {
-            $('#find').css('display', 'flex');
-        }, 300);
+            setTimeout(() => {
+                $('.alert').fadeToggle(300);
+            }, 3000);
+            $('.alert').html('Failed to auto-get your city');
+            $('#preloader').fadeToggle(300);
+            $('.left').hide(300);
+            $('.right').hide(300);
+            setTimeout(() => {
+                $('#find').css('display', 'flex');
+            }, 300);
+        }
     });
 
 $('.currently__city').click(function() {
@@ -268,6 +337,7 @@ $('.find__input').blur(function() {
 $('#find__btn').click(function() {
     $('#preloader').fadeToggle(300);
     city = firstToUpper($('.find__input').val());
+    localStorage.setItem('lastCity', city);
     $('.find__placeholder').css({
         'top': '35px',
         'opacity': '0.4',
@@ -296,11 +366,13 @@ $('#find__btn').click(function() {
 
             $('#currently__weather-icon').attr('src', setTheIcon(data.weather['0'].id, sunrise, sunset, timesone));
             $('#currently__weather').html(firstToUpper(data.weather['0'].description + ', '));
-            $('#currently__temperature').html((data.main.temp - 273).toFixed(1) + '&#8451');
+            $('#currently__temperature').html((data.main.temp - 273).toFixed(1) + '&#176; C');
             setTheBg((data.main.temp - 273).toFixed(0))
             console.log(data);
 
             $('#currently__city').html(city + '<img src="https://countryflagsapi.com/svg/' + data.sys.country + '" alt="flag" class="currently__flag">')
+            localStorage.setItem('lastFlag', '<img src="https://countryflagsapi.com/svg/' + data.sys.country + '" alt="flag" class="currently__flag">')
+
 
             fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + coords.lat + '&lon=' + coords.lon + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
                 .then(res => {
@@ -313,17 +385,20 @@ $('#find__btn').click(function() {
                     let timesone = new Date(data.timezone_offset);
                     setHourlyWeather(data.hourly);
                     setHourlyIcons(data.hourly, sunrise, sunset, timesone)
-                    $('#currently__max-temp').html((data.daily['0'].temp.max - 273).toFixed(1) + '&#8451');
-                    $('#currently__min-temp').html((data.daily['0'].temp.min - 273).toFixed(1) + '&#8451');
+                    $('#currently__max-temp').html((data.daily['0'].temp.max - 273).toFixed(1) + '&#176; C');
+                    $('#currently__min-temp').html((data.daily['0'].temp.min - 273).toFixed(1) + '&#176; C');
                     $('#preloader').fadeToggle(300);
                     for (let i = 1; i != 6; i++) {
                         $('#future__wind-speed' + i).html((data.daily[i].wind_speed * 3.6).toFixed(1) + ' km/h');
                         $('#future__wind-direction' + i).css('transform', 'rotate(' + data.daily[i].wind_deg + 'deg)');
 
-                        $('#future__max-temp' + i).html((data.daily[i].temp.max - 273).toFixed(0) + '&#8451');
-                        $('#future__min-temp' + i).html((data.daily[i].temp.min - 273).toFixed(0) + '&#8451');
+                        $('#future__max-temp' + i).html((data.daily[i].temp.max - 273).toFixed(0) + '&#176; C');
+                        $('#future__min-temp' + i).html((data.daily[i].temp.min - 273).toFixed(0) + '&#176; C');
 
-                        $('#future__weather-status' + i).attr('src', setTheIcon(data.daily[i].weather[0].id, sunrise, sunset, timesone));
+                        $('#future__weather-status' + i).css({
+                            'background': 'url("' + setTheIcon(data.daily[i].weather[0].id, sunrise, sunset, timesone) + '") center center no-repeat no-repeat',
+                            'backgroundSize': 'contain'
+                        });
 
                         let timezone = new Date(data.timezone_offset);
                         let thisSunrise = new Date(data.daily[i].sunrise);
