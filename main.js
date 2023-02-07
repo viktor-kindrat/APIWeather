@@ -169,8 +169,8 @@ fetch('https://api.freegeoip.app/json/?apikey=d90ea8c0-b6a5-11ec-ac3c-35aeccb7f4
         console.log(data);
         city = data.city;
         localStorage.setItem('lastCity', city);
-        localStorage.setItem('lastFlag', '<img src="https://countryflagsapi.com/svg/' + data.country_name + '" alt="flag" class="currently__flag">')
-        $('#currently__city').html(city + '<img src="https://countryflagsapi.com/svg/' + data.country_name + '" alt="flag" class="currently__flag">')
+        localStorage.setItem('lastFlag', '<img src="https://www.countryflagicons.com/FLAT/32/UA' + data.country_name + '.png" alt="flag" class="currently__flag">')
+        $('#currently__city').html(city + '<img src="https://www.countryflagicons.com/FLAT/32/' + data.country_name + '.png" alt="flag" class="currently__flag">')
         fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
             .then(res => {
                 return res.json()
@@ -370,8 +370,8 @@ $('#find__btn').click(function() {
             setTheBg((data.main.temp - 273).toFixed(0))
             console.log(data);
 
-            $('#currently__city').html(city + '<img src="https://countryflagsapi.com/svg/' + data.sys.country + '" alt="flag" class="currently__flag">')
-            localStorage.setItem('lastFlag', '<img src="https://countryflagsapi.com/svg/' + data.sys.country + '" alt="flag" class="currently__flag">')
+            $('#currently__city').html(city + '<img src="https://www.countryflagicons.com/FLAT/32/' + data.sys.country + '.png" alt="flag" class="currently__flag">')
+            localStorage.setItem('lastFlag', '<img src="https://www.countryflagicons.com/FLAT/32/' + data.sys.country + '.png" alt="flag" class="currently__flag">')
 
 
             fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + coords.lat + '&lon=' + coords.lon + '&appid=8635c93cf4a0383f1fdc0ae02896a802')
